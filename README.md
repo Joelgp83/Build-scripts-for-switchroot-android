@@ -7,7 +7,9 @@ USAGE:
 
 Place the .sh files in your android/lineage folder on whatever driver you're using to build. Make executable with chmod +x.
 
-Invoke the update script with ./qupd8.sh -r <ROM NAME>
+Invoke the update script with ```
+
+./qupd8.sh -r <ROM NAME>```
   
 Your choices are:
 
@@ -22,10 +24,11 @@ If you wish to perform a force-sync, invoke with -f.
 If you use no flags, source will still be updated and the switchroot-specific patches applied, but the lunch command will not be run.
 
 
-qbuild.sh is the build script.  It will set the build process to use all but 2 of your CPU cores/threads.  Run it after qupd8.sh.  Invoke it with ./qbuild.sh -r <ROM NAME>. 
+qbuild.sh is the build script.  It will set the build process to use all but 2 of your CPU cores/threads.  Run it after qupd8.sh.  Invoke it with 
+```./qbuild.sh -r <ROM NAME>.``` 
 
 For Example:
 
-./qbuild.sh -r icosa  
+```./qbuild.sh -r icosa```  
 
 Will build the icosa ROM.
