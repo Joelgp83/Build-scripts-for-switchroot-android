@@ -4,7 +4,7 @@ These scripts are used to update your Switchroot Android Q source, and build fro
 
 USAGE:
 
-Place the .sh files in your Android/lineage folder on whatever driver you're using to build. Make executable with chmod +x.
+Place the .sh files in your android/lineage folder on whatever driver you're using to build. Make executable with chmod +x.
 
 Invoke the update script with ./qupd8.sh -r <ROM NAME>  Your choices are:
 
