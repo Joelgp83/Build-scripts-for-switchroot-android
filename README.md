@@ -7,9 +7,10 @@ USAGE:
 
 Place the .sh files in your android/lineage folder on whatever driver you're using to build. Make executable with chmod +x.
 
-Invoke the update script with ```
-
-./qupd8.sh -r <ROM NAME>```
+Invoke the update script with 
+```
+./qupd8.sh -r <ROM NAME>
+```
   
 Your choices are:
 
