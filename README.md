@@ -7,10 +7,14 @@ USAGE:
 
 Place the .sh files in your android/lineage folder on whatever driver you're using to build. Make executable with chmod +x.
 
-Invoke the update script with ./qupd8.sh -r <ROM NAME>  Your choices are:
+Invoke the update script with ./qupd8.sh -r <ROM NAME>
+  
+Your choices are:
 
 icosa : For No Nvidia Stuff
+
 foster_tab : For Nvidia Stuff
+
 foster : For Android TV with Nvidia Stuff
 
 If you wish to perform a force-sync, invoke with -f.
