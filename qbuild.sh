@@ -49,12 +49,12 @@ if [[ -n $rom ]]; then
 
                 *)
                         echo "Incorrect ROM name or No ROM specified, exiting."
-			exit
+			exit 1
                         ;;
         esac
 else
         echo "No ROM specified. Please specify a rom with -r <ROM NAME>."
-	exit
+	exit 1
 fi
 
 #Sizzling teh Bacon
