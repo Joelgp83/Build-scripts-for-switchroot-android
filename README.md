@@ -26,7 +26,9 @@ If you use no flags, source will still be updated and the switchroot-specific pa
 
 
 qbuild.sh is the build script.  It will set the build process to use all but 2 of your CPU cores/threads.  Run it after qupd8.sh.  Invoke it with 
-```./qbuild.sh -r <ROM NAME>.``` 
+```
+./qbuild.sh -r <ROM NAME>.
+``` 
 
 For Example:
 
