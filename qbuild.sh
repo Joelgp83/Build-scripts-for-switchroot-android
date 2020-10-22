@@ -13,7 +13,7 @@ do
 
 		*)	
 			echo "Not a valid flag.  Please specify which ROM with -r <ROM NAME>."
-			exit
+			exit 1
 			;;
 	esac
 done
