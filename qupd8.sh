@@ -31,7 +31,7 @@ cd ../..
 
 #Check if we are doing force-sync, otherwise do normal sync.
 
-if [[ -n ${force_sync} ]]; then
+if [[ ${force_sync} = "true" ]]; then
 	repo sync --force-sync
 else
 	repo sync
