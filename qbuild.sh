@@ -69,7 +69,7 @@ if [[ -n $rom ]]; then
 	#Destination is up the path back in android/<rom name>_files.  Recurse all the way back.
 	cp $bacon ../../../../../$rom"_files"
 	
-	#Pull the files hekate needs to do the flash
+	#Now lets go after the files hekate needs to do the flash
 	echo 'Bacon Delivered.  Grabbing the .dtb and kernel files.....'
 
 	#Prepare new directory android/<rom name>_files/switchroot/install, and copy boot.img back up to that.
