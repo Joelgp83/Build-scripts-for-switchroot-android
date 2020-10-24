@@ -18,8 +18,7 @@ do
 	esac
 done
 
-#change directory  TODO: Add a flag to specify source location to allow running script from anywhere in filesystem.   Add flag to assume default location when running outside source location.
-#cd android/lineage
+#cd ~/android/lineage
 
 #Set Build Environment
 echo "Setting up build environment...."
@@ -52,11 +51,29 @@ if [[ -n $rom ]]; then
 			exit 1
                         ;;
         esac
+
+	#Sizzling teh Bacon
+	echo "Beginning Build...."
+	make bacon -j$(($(nproc)-2))
+
+	#Let's start moving everything to a more user-accessible spot
+	mkdir -p ../$rom"_files"
+	echo 'Delivering bacon to output folder.....'
+	cd out/target/product/$rom
+	bacon=`ls -t lineage-17.1*.zip | tail -1`
+	cp $bacon ../../../../../$rom"_files"
+	
+	#Pull the files hekate needs to do the flash
+	echo 'Bacon Delivered.  Grabbing the .dtb and kernel files.....'
+	mkdir -p ../../../../../$rom"_files"/switchroot/install
+	echo 'You will find them in the /switchroot/install/ folder of the output directory.'
+	
+	cp boot.img ../../../../../$rom"_files"/switchroot/install
+	cp obj/KERNEL_OBJ/arch/arm64/boot/dts/tegra210-icosa.dtb ../../../../../$rom"_files"/switchroot/install
+	exit 0	
+
 else
         echo "No ROM specified. Please specify a rom with -r <ROM NAME>."
 	exit 1
 fi
 
-#Sizzling teh Bacon
-echo "Beginning Build...."
-make bacon -j$(($(nproc)-2))
