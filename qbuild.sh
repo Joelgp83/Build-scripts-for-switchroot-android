@@ -18,7 +18,7 @@ do
 	esac
 done
 
-#cd ~/android/lineage
+#TODO: Add check to make sure we're in proper starting directory, android/lineage, and either bail or move to it.
 
 #Set Build Environment
 echo "Setting up build environment...."
@@ -59,19 +59,27 @@ if [[ -n $rom ]]; then
 	#Let's start moving everything to a more user-accessible spot
 	mkdir -p ../$rom"_files"
 	echo 'Delivering bacon to output folder.....'
+	
+	#We'll be running the next few copies from the out/target/product/$rom directory.  All will be relative to that.
 	cd out/target/product/$rom
+	
+	#Determine latest bacon.zip file name, store for later
 	bacon=`ls -t lineage-17.1*.zip | tail -1`
+
+	#Destination is up the path back in android/<rom name>_files.  Recurse all the way back.
 	cp $bacon ../../../../../$rom"_files"
 	
 	#Pull the files hekate needs to do the flash
 	echo 'Bacon Delivered.  Grabbing the .dtb and kernel files.....'
-	mkdir -p ../../../../../$rom"_files"/switchroot/install
-	echo 'You will find them in the /switchroot/install/ folder of the output directory.'
-	
-	cp boot.img ../../../../../$rom"_files"/switchroot/install
-	cp obj/KERNEL_OBJ/arch/arm64/boot/dts/tegra210-icosa.dtb ../../../../../$rom"_files"/switchroot/install
-	exit 0	
 
+	#Prepare new directory android/<rom name>_files/switchroot/install, and copy boot.img back up to that.
+	mkdir -p ../../../../../$rom"_files"/switchroot/install
+	echo 'You will find them in the switchroot/install/ folder of the output directory.'	
+	cp boot.img ../../../../../$rom"_files"/switchroot/install
+
+	#Reach deeper into where the dtb lives, and copy it to output directory.
+	cp obj/KERNEL_OBJ/arch/arm64/boot/dts/tegra210-icosa.dtb ../../../../../$rom"_files"/switchroot/install
+	
 else
         echo "No ROM specified. Please specify a rom with -r <ROM NAME>."
 	exit 1
