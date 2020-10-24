@@ -3,10 +3,15 @@
 #exit on error
 set -e
 
-while getopts ":r:" OPTION
+while getopts ":cr:" OPTION
 do
 	
 	case $OPTION in
+		c)
+			echo "Performing make clean....."
+			make clean
+			;;
+			
 		r) 
 			rom=$OPTARG
 			;;
@@ -30,6 +35,7 @@ ccache -M 50G
 
 #check rom and set up lunch
 if [[ -n $rom ]]; then
+
         case $rom in
                 icosa)
 			echo "Selected rom is Icosa"
@@ -84,4 +90,3 @@ else
         echo "No ROM specified. Please specify a rom with -r <ROM NAME>."
 	exit 1
 fi
-
