@@ -24,6 +24,7 @@ do
 done
 
 #TODO: Add check to make sure we're in proper starting directory, android/lineage, and either bail or move to it.
+cd ..
 
 #Set Build Environment
 echo "Setting up build environment...."

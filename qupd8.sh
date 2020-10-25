@@ -18,8 +18,8 @@ do
 	esac
 done
 
-#change directory  TODO: Add a flag to specify source location to allow running script from anywhere in filesystem.   Add flag to assume default location when running outside source location.
-#cd ~/android/lineage
+#change directory TODO: Add check to make sure we're starting from switchroot_scripts in the lineage source
+cd ..
 
 #Grab latest branch heads
 repo forall -c 'git reset --hard'
