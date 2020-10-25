@@ -23,7 +23,7 @@ do
 	esac
 done
 
-#TODO: Add check to make sure we're in proper starting directory, android/lineage, and either bail or move to it.
+#change directory TODO: Add check to make sure we're starting from switchroot_scripts in the lineage source
 cd ..
 
 #Set Build Environment
