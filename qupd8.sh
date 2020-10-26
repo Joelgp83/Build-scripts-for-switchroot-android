@@ -2,7 +2,7 @@
 #Switch Android Q source update script
 
 #Grab Flags.  Bail if invalid flag used.  Store ROM name for later.
-while getopts ":fr:" OPTION
+while getopts ":fr:u" OPTION
 do
 	case $OPTION in
 		r) 
@@ -10,9 +10,15 @@ do
 			;;
 		f)
 			force_sync="true"
+
+		u)
+			git reset --hard
+			git pull
+			echo "Scripts are updated to latest. Please run again without -u to update android-switch source."
+			exit 1
 			;;
 		*) 
-			echo "Invalid or Incomplete Flag.  Valid flags are -f and -r.  Specify ROM name with -r <ROM NAME>."
+			echo "Invalid or Incomplete Flag.  Valid flags are -f, -r, and -u.  Specify ROM name with -r <ROM NAME>.  Update the Switchroot Scripts with -u."
 			exit 1
 			;;
 	esac
@@ -24,10 +30,9 @@ cd ..
 #Grab latest branch heads
 repo forall -c 'git reset --hard'
 
-#Update the switchroot local manifests portion
+#Update the switchroot local manifests portion and the switchroot scripts repo
 cd .repo/local_manifests
 git pull
-cd ../..
 
 #Check if we are doing force-sync, otherwise do normal sync.
 
@@ -67,15 +72,18 @@ if [[ -n $rom ]]; then
                 icosa)
 			echo "Selected rom is Icosa"
                         lunch lineage_icosa-userdebug
+			echo "Environment ready.  To build, run qbuild.sh -r <ROM NAME>."
                         ;;
                 foster_tab)
 			echo "Selected ROM is FosterTab"
                         lunch lineage_foster_tab-userdebug
+			echo "Environment ready.  To build, run qbuild.sh -r <ROM NAME>."
                         ;;
 
                 foster)
 			echo "Selected ROM is Foster"
                         lunch lineage_foster-userdebug
+			echo "Environment ready.  To build, run qbuild.sh -r <ROM NAME>."
                         ;;
                 *)
                         echo "Incorrect ROM name or No ROM specified.  Exiting."

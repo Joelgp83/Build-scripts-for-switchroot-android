@@ -3,13 +3,22 @@
 #exit on error
 set -e
 
-while getopts ":cr:" OPTION
+while getopts ":cj:r:t" OPTION
 do
 	
 	case $OPTION in
 		c)
 			echo "Performing make clean....."
 			make clean
+			;;
+
+		j)
+			numThread=$OPTARG
+			numTest='^[0-9]+$'
+			if ! [[ $numThread =~ $numTest ]]; then
+				echo 'Invalid number of threads specified.'
+				exit 1
+			fi
 			;;
 			
 		r) 
@@ -39,17 +48,17 @@ if [[ -n $rom ]]; then
 
         case $rom in
                 icosa)
-			echo "Selected rom is Icosa"
+			echo "Selected rom is icosa"
                         lunch lineage_icosa-userdebug
                         ;;
 
                 foster_tab)
-			echo "Selected ROM is FosterTab"
+			echo "Selected ROM is foster_tab"
                         lunch lineage_foster_tab-userdebug
                         ;;
 
                 foster)
-			echo "Selected ROM is Foster"
+			echo "Selected ROM is foster"
                         lunch lineage_foster-userdebug
                         ;;
 
@@ -60,8 +69,21 @@ if [[ -n $rom ]]; then
         esac
 
 	#Sizzling teh Bacon
-	echo "Beginning Build...."
-	make bacon -j$(($(nproc)-2))
+	#check if we're doing a custom thread count, make sure it does not exceed the cpu's max supported threads.
+	if [[ -n $numThread ]]; then
+		#Check for and limit to max supported CPU threads. 
+		#I haven't been able to get this right, so disabling it for now.
+		#if [[ $numThread > nproc ]]
+		#	echo
+		#	echo "WARNING: Max CPU supported threads is $(nproc). Limiting requested value to that...."
+		#	numThread = nproc
+		#fi
+		echo Beginning Build with $numThread threads....
+		make bacon -j$numThread
+	else
+		echo "Beginning Build...."
+		make bacon
+	fi
 
 	#Let's start moving everything to a more user-accessible spot
 	mkdir -p ../$rom"_files"
