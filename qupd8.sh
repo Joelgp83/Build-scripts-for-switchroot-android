@@ -14,11 +14,15 @@ do
 		u)
 			git reset --hard
 			git pull
+			echo
 			echo "Scripts are updated to latest. Please run again without -u to update android-switch source."
+			echo
 			exit 1
 			;;
 		*) 
+			echo
 			echo "Invalid or Incomplete Flag.  Valid flags are -f, -r, and -u.  Specify ROM name with -r <ROM NAME>.  Update the Switchroot Scripts with -u."
+			echo
 			exit 1
 			;;
 	esac
