@@ -3,7 +3,7 @@
 
 These scripts are used to update your Switchroot Android Q source, and build from it.  They are based on the Q-Tips guide at https://gitlab.com/ZachyCatGames/q-tips-guide.  If you've used that guide to download your source, these scripts will work with it.
 
-# USAGE:
+# Installation:
 
 `cd` to your `android/lineage` folder containing the source. If you're doing this for the first time and don't already have that folder, run
 ```
@@ -17,9 +17,10 @@ Clone the repo with
 ```
 git clone https://github.com/Joelgp83/Build-scripts-for-switchroot-android.git switchroot_scripts
 cd switchroot_scripts
+chmod +x *.sh
 ```
-
-There are several scripts available to manage the source.
+# USAGE
+There are several scripts available to manage the switchroot android source.
 
 ## qPrep.sh
 `qPrep.sh` is used to setup the source from scratch.  This will require several dependencies to be installed.  If you are running Ubuntu 18.04 or newer, or a distro based on that, please run:
