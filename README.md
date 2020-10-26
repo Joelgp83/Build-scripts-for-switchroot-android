@@ -11,7 +11,7 @@ mkdir -p android/lineage
 cd android/lineage
 ```
 
-To create and enter the target directory these instructions should be followed in.
+To create and enter the folder.
 
 Clone the repo with 
 ```
@@ -20,7 +20,7 @@ cd switchroot_scripts
 chmod +x *.sh
 ```
 # USAGE
-There are several scripts available to manage the switchroot android source.
+There are several scripts available to manage the switchroot android source. These must be run from the `switchroot_scripts` directory.
 
 ## qPrep.sh
 `qPrep.sh` is used to setup the source from scratch.  This will require several dependencies to be installed.  If you are running Ubuntu 18.04 or newer, or a distro based on that, please run:
