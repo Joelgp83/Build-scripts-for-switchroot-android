@@ -13,8 +13,11 @@ cd android/lineage
 
 To create and enter the target directory these instructions should be followed in.
 
-Clone the repo with `git clone https://github.com/Joelgp83/Build-scripts-for-switchroot-android.git switchroot_scripts`
-`cd switchroot_scripts`
+Clone the repo with 
+```
+git clone https://github.com/Joelgp83/Build-scripts-for-switchroot-android.git switchroot_scripts
+cd switchroot_scripts
+```
 
 There are several scripts available to manage the source.
 
