@@ -10,6 +10,7 @@ do
 			;;
 		f)
 			force_sync="true"
+			;;
 
 		u)
 			git reset --hard
