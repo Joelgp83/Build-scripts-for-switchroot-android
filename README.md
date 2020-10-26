@@ -5,7 +5,7 @@ These scripts are used to update your Switchroot Android Q source, and build fro
 
 # USAGE:
 
-`cd` to your `android/lineage` folder containing the source. If you're doing this for the first time, run
+`cd` to your `android/lineage` folder containing the source. If you're doing this for the first time and don't already have that folder, run
 ```
 mkdir -p android/lineage
 cd android/lineage
