@@ -1,9 +1,9 @@
-#Build-scripts-for-switchroot-android
-##Various scripts for managing the switchroot android build process
+# Build-scripts-for-switchroot-android
+## Various scripts for managing the switchroot android build process
 
 These scripts are used to update your Switchroot Android Q source, and build from it.  They are based on the Q-Tips guide at https://gitlab.com/ZachyCatGames/q-tips-guide.  If you've used that guide to download your source, these scripts will work with it.
 
-#USAGE:
+# USAGE:
 
 `cd` to your `android/lineage` folder containing the source.
 
@@ -12,7 +12,7 @@ Clone the repo with `git clone https://github.com/Joelgp83/Build-scripts-for-swi
 
 There are several scripts available to manage the source.
 
-##qPrep.sh
+## qPrep.sh
 `qPrep.sh` is used to setup the source from scratch.  This will require several dependencies to be installed.  If you are running Ubuntu 18.04 or newer, or a distro based on that, please run:
 
 ```
@@ -27,7 +27,7 @@ For first timers who have never interacted with git before, there will be some i
 
 If this is not your first time, and you are merely restarting from scratch, you can skip this entirely by invoking with the `-s` flag. The script will then be non-interactive.
 
-##qupd8.sh
+## qupd8.sh
 
 qupd8.sh is the source update script.  Run this when you want to grab the latest switchroot source changes.
 
@@ -45,7 +45,7 @@ If you wish to perform a `force-sync`, invoke with `-f` as well.  If you wish to
 
 If you use no flags, source will still be updated and the switchroot-specific patches applied, but the `lunch` command will not be run.
 
-##qbuild.sh
+## qbuild.sh
 
 `qbuild.sh` is the build script. You can control the number of CPU cores/threads to use with `-j(number)`.  Run this script after `qupd8.sh` to build with the latest source changes.
 
@@ -60,9 +60,6 @@ So if you wanted to build icosa, you'd run `./qbuild.sh -r icosa`
 Finally, invoking with `-c` will do a `make clean` before the build, in case you wanted do a fresh build.
 
 
-##Getting the files you need after build
+## Getting the files you need after build
 
 The script will place the resulting android-switch install .zip in `android/<rom name>_files`.  Further, in that folder you will find a `switchroot/install` folder containing the `.dtb` and `boot.img` files that hekate will flash. Simply copy the zip file and the `switchroot` folder to the sd card's hos partition, and you'll be ready to flash the new build with hekate and TWRP.
-
-
-
