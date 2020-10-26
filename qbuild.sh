@@ -72,14 +72,15 @@ if [[ -n $rom ]]; then
 	#check if we're doing a custom thread count, make sure it does not exceed the cpu's max supported threads.
 	if [[ -n $numThread ]]; then
 		#Check for and limit to max supported CPU threads. 
-		#I haven't been able to get this right, so disabling it for now.
-		#if [[ $numThread > nproc ]]
-		#	echo
-		#	echo "WARNING: Max CPU supported threads is $(nproc). Limiting requested value to that...."
-		#	numThread = nproc
-		#fi
+		if [[ $(( numThreads > $(nproc) )) ]]; then
+			echo
+			echo "WARNING: Max CPU supported threads is $(nproc). Limiting requested value to that...."
+			numThread = nproc
+		fi
+
 		echo Beginning Build with $numThread threads....
 		make bacon -j$numThread
+
 	else
 		echo "Beginning Build...."
 		make bacon
