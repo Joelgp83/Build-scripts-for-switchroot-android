@@ -14,6 +14,7 @@ do
 		u)
 			git reset --hard
 			git pull
+			chmod +x *.sh
 			echo
 			echo "Scripts are updated to latest. Please run again without -u to update android-switch source."
 			echo
