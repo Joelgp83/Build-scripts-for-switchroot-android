@@ -89,8 +89,10 @@ cd ../../../bionic
 patch -p1 < ../.repo/local_manifests/patches/bionic_intrinsics.patch
 cd ../
 
-echo 
-echo "Source preparation complete.  To build, please run qbuild.sh -r <ROM NAME>.  Please be aware that a first build make take several hours to complete, depending on your hardware."
+echo
+echo "==========================================================================="
+echo "Source preparation complete.  To build, please run qbuild.sh -r <ROM NAME>."
+echo "Please be aware that a first build may take several hours to complete, depending on your hardware."
 echo
 
 
