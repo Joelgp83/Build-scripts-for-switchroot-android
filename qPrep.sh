@@ -55,7 +55,7 @@ if ! [[ ${skipID} = "true" ]]; then
 		git config --global user.name $userName
 	fi
 	echo
-	echo "Thank you.  Now, we\'ll initialize the repo and begin syncing source. This may take some time depending on your connection speed, so please be patient."
+	echo "Thank you.  Now, we'll initialize the repo and begin syncing source. This may take some time depending on your connection speed, so please be patient."
 	echo
 fi
 
