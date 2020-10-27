@@ -33,7 +33,7 @@ To grab the required dependencies for the build.
 
 Invoke the script with `./qPrep.sh`.
 
-For first timers who have never interacted with git before, there will be some interactivity required.  The repo utility used requires an email address and username to identify yourself to git for the source sync. It will prompt you for this.  After entering an email address and username, the rest of the script is automatic.
+For first timers who have never interacted with git before, there will be some interactivity required.  The repo utility used requires an email address and username to identify yourself to git for the source sync. It will prompt you for this.  After entering an email address and username, it may ask you about terminal colors.  After answering that question, the rest of the script is automatic.
 
 If this is not your first time, and you are merely restarting from scratch, you can skip this entirely by invoking with the `-s` flag. The script will then be non-interactive.
 
