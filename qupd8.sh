@@ -1,5 +1,6 @@
 #!/bin/bash
-#Switch Android Q source update script
+#qupd8.sh -- Switch Android Q source update script
+set -e
 
 #Grab Flags.  Bail if invalid flag used.  Store ROM name for later.
 while getopts ":fr:u" OPTION
