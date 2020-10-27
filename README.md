@@ -1,7 +1,7 @@
 # Build-scripts-for-switchroot-android
 ## Various scripts for managing the switchroot android build process
 
-These scripts are used to update your Switchroot Android Q source, and build from it.  They are based on the Q-Tips guide at https://gitlab.com/ZachyCatGames/q-tips-guide.  If you've used that guide to download your source, these scripts will work with it.
+These scripts are used to update your Switchroot Android Q source, and build from it.  They are based on the Q-Tips guide at https://gitlab.com/ZachyCatGames/q-tips-guide.
 
 # Installation:
 
