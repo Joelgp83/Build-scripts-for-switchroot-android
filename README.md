@@ -5,32 +5,33 @@ These scripts are used to update your Switchroot Android Q source, and build fro
 
 # Installation:
 
-`cd` to your `android/lineage` folder containing the source. If you're doing this for the first time and don't already have that folder, run
+This process requires several dependencies to be installed before the scripts can successfully build.  If you are running Ubuntu 18.04 or newer, or a distro based on that, you can grab those dependencies by running:
+
 ```
-mkdir -p android/lineage
+sudo apt install -y bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev libwxgtk3.0-dev
+```
+With that settled, please `cd` to your `android/lineage` folder containing the source. If you're doing this for the first time and don't already have that folder, run
+
+```
+mkdir -p ~/android/lineage
 cd android/lineage
 ```
 
 To create and enter the folder.
 
-Clone the repo with 
+Clone this repo with 
 ```
 git clone https://github.com/Joelgp83/Build-scripts-for-switchroot-android.git switchroot_scripts
 cd switchroot_scripts
 chmod +x *.sh
 ```
+The scripts then be synced and ready for use.  
+
 # USAGE
 There are several scripts available to manage the switchroot android source. These must be run from the `switchroot_scripts` directory.
 
 ## qPrep.sh
-`qPrep.sh` is used to setup the source from scratch.  This will require several dependencies to be installed.  If you are running Ubuntu 18.04 or newer, or a distro based on that, please run:
-
-```
-sudo apt install bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev libwxgtk3.0-dev
-```
-
-To grab the required dependencies for the build.
-
+`qPrep.sh` is used to setup the source from scratch.  
 Invoke the script with `./qPrep.sh`.
 
 For first timers who have never interacted with git before, there will be some interactivity required.  The repo utility used requires an email address and username to identify yourself to git for the source sync. It will prompt you for this.  After entering an email address and username, it may ask you about terminal colors.  After answering that question, the rest of the script is automatic.
