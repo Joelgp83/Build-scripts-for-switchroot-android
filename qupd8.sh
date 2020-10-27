@@ -40,6 +40,7 @@ repo forall -c 'git reset --hard'
 #Update the switchroot local manifests portion and the switchroot scripts repo
 cd .repo/local_manifests
 git pull
+cd ../..
 
 #Check if we are doing force-sync, otherwise do normal sync.
 
