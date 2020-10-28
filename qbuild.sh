@@ -75,7 +75,7 @@ if [[ -n $rom ]]; then
 		if [[ $(( numThreads > $(nproc) )) ]]; then
 			echo
 			echo "WARNING: Max CPU supported threads is $(nproc). Limiting requested value to that...."
-			numThread = nproc
+			numThread=$(nproc)
 		fi
 
 		echo Beginning Build with $numThread threads....
