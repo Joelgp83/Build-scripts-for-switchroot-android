@@ -100,7 +100,10 @@ if [[ -n $rom ]]; then
 	cp $bacon ../../../../../$rom"_files"
 	
 	#Now for the files hekate needs to do the flash
-	echo 'Bacon Delivered.  Grabbing the .dtb and kernel files.....'
+	echo 'Bacon Delivered.  Grabbing the .dtb, twrp.img, and kernel files.....'
+
+	#Grab latest twrp from PabloZaiden's repo
+	wget https://github.com/PabloZaiden/switchroot-android-build/blob/master/external/twrp.img -P ./../../../../$rom"_files"/switchroot/install
 
 	#Prepare new directory android/<rom name>_files/switchroot/install, and copy boot.img back up to that.
 	mkdir -p ../../../../../$rom"_files"/switchroot/install
@@ -110,6 +113,7 @@ if [[ -n $rom ]]; then
 	#Reach deeper into where the dtb lives, and copy it to output directory.
 	cp obj/KERNEL_OBJ/arch/arm64/boot/dts/tegra210-icosa.dtb ../../../../../$rom"_files"/switchroot/install
 	
+		
 else
         echo "No ROM specified. Please specify a rom with -r <ROM NAME>."
 	exit 1
