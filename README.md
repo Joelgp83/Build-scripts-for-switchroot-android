@@ -30,9 +30,9 @@ The scripts then be synced and ready for use.
 # USAGE
 There are several scripts available to manage the switchroot android source. These must be run from the `switchroot_scripts` directory.
 
-## qPrep.sh
-`qPrep.sh` is used to setup the source from scratch.  
-Invoke the script with `./qPrep.sh`.
+## qprep.sh
+`qprep.sh` is used to setup the source from scratch.  
+Invoke the script with `./qprep.sh`.
 
 For first timers who have never interacted with git before, there will be some interactivity required.  The repo utility used requires an email address and username to identify yourself to git for the source sync. It will prompt you for this.  After entering an email address and username, it may ask you about terminal colors.  After answering that question, the rest of the script is automatic.
 
@@ -58,7 +58,7 @@ If you use no flags, source will still be updated and the switchroot-specific pa
 
 ## qbuild.sh
 
-`qbuild.sh` is the build script. You can control the number of CPU cores/threads to use with `-j(number)`.  Run this script after `qupd8.sh` to build with the latest source changes.
+`qbuild.sh` is the build script. Optionally, you can control the number of CPU cores/threads to use with `-j(number)`.  Run this script after `qupd8.sh` to build with the latest source changes.
 
 Standard invocation with default options will be 
 
@@ -73,4 +73,4 @@ Finally, invoking with `-c` will do a `make clean` before the build, in case you
 
 ## Getting the files you need after build
 
-The script will place the resulting android-switch install .zip in `android/<rom name>_files`.  Further, in that folder you will find a `switchroot/install` folder containing the `.dtb` and `boot.img` files that hekate will flash. Simply copy the zip file and the `switchroot` folder to the sd card's hos partition, and you'll be ready to flash the new build with hekate and TWRP.
+The script will place the resulting android-switch install .zip in `android/<rom name>_files`.  Further, in that folder you will find a `switchroot/install` folder containing the `twrp.img`, `tegra210-icosa.dtb` and `boot.img` files that hekate will flash. Simply copy the zip file and the `switchroot` folder to the sd card's hos partition, and you'll be ready to flash the new build with hekate (Get the latest from https://github.com/CTCaer/hekate/releases) and TWRP.
