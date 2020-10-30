@@ -10,7 +10,7 @@ This process requires several dependencies to be installed before the scripts ca
 ```
 sudo apt install -y bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev libwxgtk3.0-dev
 ```
-With that settled, please `cd` to your `android/lineage` folder containing the source. If you're doing this for the first time and don't already have that folder, run
+With that settled, please `cd` to your `android/lineage` folder containing the source. If you're building Android for the first time and don't already have that folder, run
 
 ```
 mkdir -p ~/android/lineage
@@ -25,7 +25,7 @@ git clone https://github.com/Joelgp83/Build-scripts-for-switchroot-android.git s
 cd switchroot_scripts
 chmod +x *.sh
 ```
-The scripts then be synced and ready for use.  
+The scripts will then be synced and ready for use.  
 
 # USAGE
 There are several scripts available to manage the switchroot android source. These must be run from the `switchroot_scripts` directory.
