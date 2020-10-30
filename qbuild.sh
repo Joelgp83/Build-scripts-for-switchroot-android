@@ -103,7 +103,7 @@ if [[ -n $rom ]]; then
 	echo 'Bacon Delivered.  Grabbing the .dtb, twrp.img, and kernel files.....'
 
 	#Grab latest twrp from PabloZaiden's repo
-	wget https://github.com/PabloZaiden/switchroot-android-build/blob/master/external/twrp.img -P ./../../../../$rom"_files"/switchroot/install
+	wget https://github.com/PabloZaiden/switchroot-android-build/blob/master/external/twrp.img -P ../../../../../$rom"_files"/switchroot/install
 
 	#Prepare new directory android/<rom name>_files/switchroot/install, and copy boot.img back up to that.
 	mkdir -p ../../../../../$rom"_files"/switchroot/install
