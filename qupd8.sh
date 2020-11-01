@@ -14,6 +14,20 @@ do
 			;;
 
 		u)
+			file1="../qupd8.sh"
+			file2="../qbuild.sh"
+			if [[ -f $file1 || -f $file2 ]]; then
+				echo
+				echo "Removing the old 1.0 versions of the scripts from the lineage directory..."
+				if [ -f $file1 ]; then
+					rm file1
+				fi
+				if [ -f $file2 ]; then
+					rm file2
+				fi
+				echo "Removal Complete."
+				echo
+			fi
 			git reset --hard
 			git pull
 			chmod +x *.sh
