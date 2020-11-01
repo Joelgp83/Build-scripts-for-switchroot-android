@@ -20,10 +20,10 @@ do
 				echo
 				echo "Removing the old 1.0 versions of the scripts from the lineage directory..."
 				if [ -f $file1 ]; then
-					rm file1
+					rm $file1
 				fi
 				if [ -f $file2 ]; then
-					rm file2
+					rm $file2
 				fi
 				echo "Removal Complete."
 				echo
