@@ -1,8 +1,9 @@
 #!/bin/bash
-#Switch Android Q source update script
+#qupd8.sh -- Switch Android Q source update script
+set -e
 
 #Grab Flags.  Bail if invalid flag used.  Store ROM name for later.
-while getopts ":fr:" OPTION
+while getopts ":fr:u" OPTION
 do
 	case $OPTION in
 		r) 
@@ -11,20 +12,46 @@ do
 		f)
 			force_sync="true"
 			;;
+
+		u)
+			file1="../qupd8.sh"
+			file2="../qbuild.sh"
+			if [[ -f $file1 || -f $file2 ]]; then
+				echo
+				echo "Removing the old 1.0 versions of the scripts from the lineage directory..."
+				if [ -f $file1 ]; then
+					rm $file1
+				fi
+				if [ -f $file2 ]; then
+					rm $file2
+				fi
+				echo "Removal Complete."
+				echo
+			fi
+			git reset --hard
+			git pull
+			chmod +x *.sh
+			echo
+			echo "Scripts are updated to latest. Please run again without -u to update android-switch source."
+			echo
+			exit 1
+			;;
 		*) 
-			echo "Invalid or Incomplete Flag.  Valid flags are -f and -r.  Specify ROM name with -r <ROM NAME>."
+			echo
+			echo "Invalid or Incomplete Flag.  Valid flags are -f, -r, and -u.  Specify ROM name with -r <ROM NAME>.  Update the Switchroot Scripts with -u."
+			echo
 			exit 1
 			;;
 	esac
 done
 
-#change directory  TODO: Add a flag to specify source location to allow running script from anywhere in filesystem.   Add flag to assume default location when running outside source location.
-#cd ~/android/lineage
+#change directory TODO: Add check to make sure we're starting from switchroot_scripts in the lineage source
+cd ..
 
 #Grab latest branch heads
 repo forall -c 'git reset --hard'
 
-#Update the switchroot local manifests portion
+#Update the switchroot local manifests portion and the switchroot scripts repo
 cd .repo/local_manifests
 git pull
 cd ../..
@@ -67,15 +94,18 @@ if [[ -n $rom ]]; then
                 icosa)
 			echo "Selected rom is Icosa"
                         lunch lineage_icosa-userdebug
+			echo "Environment ready.  To build, run qbuild.sh -r <ROM NAME>."
                         ;;
                 foster_tab)
 			echo "Selected ROM is FosterTab"
                         lunch lineage_foster_tab-userdebug
+			echo "Environment ready.  To build, run qbuild.sh -r <ROM NAME>."
                         ;;
 
                 foster)
 			echo "Selected ROM is Foster"
                         lunch lineage_foster-userdebug
+			echo "Environment ready.  To build, run qbuild.sh -r <ROM NAME>."
                         ;;
                 *)
                         echo "Incorrect ROM name or No ROM specified.  Exiting."
