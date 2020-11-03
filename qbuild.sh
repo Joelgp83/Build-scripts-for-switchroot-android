@@ -102,8 +102,11 @@ if [[ -n $rom ]]; then
 	#Now for the files hekate needs to do the flash
 	echo 'Bacon Delivered.  Grabbing the .dtb, twrp.img, and kernel files.....'
 
-	#Grab latest twrp from PabloZaiden's repo
-	wget https://github.com/PabloZaiden/switchroot-android-build/blob/master/external/twrp.img -P ../../../../../$rom"_files"/switchroot/install
+	#Grab latest twrp from PabloZaiden's repo.  Delete old copy of twrp first since wget can't seem to overwrite files.
+	if [ -f "../../../../../$rom"_files"/switchroot/install/twrp.img" ]; then
+		rm ../../../../../$rom"_files"/switchroot/install/twrp.img
+	fi
+	wget -P ../../../../../$rom"_files"/switchroot/install/twrp.img https://github.com/PabloZaiden/switchroot-android-build/raw/master/external/twrp.img
 
 	#Prepare new directory android/<rom name>_files/switchroot/install, and copy boot.img back up to that.
 	mkdir -p ../../../../../$rom"_files"/switchroot/install
