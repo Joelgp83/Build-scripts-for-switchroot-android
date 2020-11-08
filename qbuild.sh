@@ -33,7 +33,7 @@ do
 done
 
 #change directory TODO: Add check to make sure we're starting from switchroot_scripts in the lineage source
-cd ../..
+cd ../
 
 #Set Build Environment
 echo "Setting up build environment...."
