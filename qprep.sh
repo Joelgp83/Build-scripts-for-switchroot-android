@@ -24,7 +24,7 @@ echo "Please be sure you have installed necessary dependencies listed in the rea
 echo
 
 #cd upwards to android/lineage/
-cd ..
+cd ../
 
 #Grab repo
 echo
