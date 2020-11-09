@@ -34,7 +34,7 @@ do
 			echo
 			echo "Scripts are updated to latest. Please run again without -u to update android-switch source."
 			echo
-			exit 1
+			exit
 			;;
 		*) 
 			echo
