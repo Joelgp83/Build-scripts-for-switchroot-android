@@ -79,7 +79,12 @@ patch -p1 < ../../../.repo/android_device_nvidia_foster.patch
 rm ../../../.repo/android_device_nvidia_foster.patch
 cd ../../../bionic
 patch -p1 < ../.repo/local_manifests/patches/bionic_intrinsics.patch
-cd ../
+cd ../frameworks/native
+patch -p1 < ../../.repo/local_manifests/patches/frameworks_native_hwc.patch
+cd ../../hardware/libhardware
+patch -p1 < ../../.repo/local_manifests/patches/hardware_libhardware_layers.patch
+cd ../../
+
 
 echo "Source downloaded and patched.  Moving on to environment setup."
 #Setup ccache
