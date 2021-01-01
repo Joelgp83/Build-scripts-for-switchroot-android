@@ -77,6 +77,7 @@ source build/envsetup.sh
 repopick -t nvidia-enhancements-q
 repopick -t nvidia-nvgpu-q
 repopick -t icosa-bt-lineage-17.1
+repopick -t nvidia-beyonder-q
 repopick 287339
 repopick 284553
 
