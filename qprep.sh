@@ -81,15 +81,11 @@ repopick 287339
 repopick 284553
 
 #Download and apply source patches
-wget -O .repo/android_device_nvidia_foster.patch https://gitlab.com/ZachyCatGames/q-tips-guide/-/raw/master/res/android_device_nvidia_foster.patch
-cd device/nvidia/foster
-patch -p1 < ../../../.repo/android_device_nvidia_foster.patch
-rm ../../../.repo/android_device_nvidia_foster.patch
+cd device/nvidia/foster_tab/
+patch -p1 <  ../../../.repo/local_manifests/patches/device_nvidia_foster_tab-beyonder.patch
 cd ../../../bionic
 patch -p1 < ../.repo/local_manifests/patches/bionic_intrinsics.patch
-cd ../frameworks/base
-patch -p1 < ../../.repo/local_manifests/patches/frameworks_base_nvcpl.patch
-cd ../../
+cd ../
 
 echo
 echo "==========================================================================="
