@@ -67,8 +67,8 @@ fi
 #Set up build environment and apply repopicks
 source build/envsetup.sh
 repopick -t nvidia-enhancements-q
-repopick -t nvidia-nvgpu-q
 repopick -t icosa-bt-lineage-17.1
+repopick -t nvidia-shieldtech-q
 repopick -t nvidia-beyonder-q
 repopick 287339
 repopick 284553
@@ -78,7 +78,9 @@ cd device/nvidia/foster_tab/
 patch -p1 <  ../../../.repo/local_manifests/patches/device_nvidia_foster_tab-beyonder.patch
 cd ../../../bionic
 patch -p1 < ../.repo/local_manifests/patches/bionic_intrinsics.patch
-cd ../
+cd ../frameworks/native
+patch -p1 < ../../.repo/local_manifests/patches/frameworks_native-mouse.patch
+cd ../../
 
 echo "Source downloaded and patched.  Moving on to environment setup."
 #Setup ccache
