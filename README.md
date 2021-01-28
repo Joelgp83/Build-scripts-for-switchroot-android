@@ -38,6 +38,8 @@ For first timers who have never interacted with git before, there will be some i
 
 If this is not your first time, and you are merely restarting from scratch, you can skip this entirely by invoking with the `-s` flag. The script will then be non-interactive.
 
+If you intend to build Foster / AndroidTV, please invoke with `-r foster_tab` to ensure any AndroidTV-specific patches are also applied.  This will save you time later.
+
 ## qupd8.sh
 
 qupd8.sh is the source update script.  Run this when you want to grab the latest switchroot source changes.
@@ -54,7 +56,7 @@ Your choices are:
 
 If you wish to perform a `force-sync`, invoke with `-f` as well.  If you wish to update your copies of the Switchroot scripts, run with `-u`.
 
-If you use no flags, source will still be updated and the switchroot-specific patches applied, but the `lunch` command will not be run.
+If you use no flags, source will still be updated and the switchroot-specific non-AndroidTV patches applied, but the `lunch` command will not be run.  *Again, if you intend to build Foster/AndroidTV, you must specify the foster rom with either this script or qprep.sh as well as when running qbuild.sh*.
 
 ## qbuild.sh
 
