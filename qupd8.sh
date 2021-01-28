@@ -57,7 +57,6 @@ git pull
 cd ../..
 
 #Check if we are doing force-sync, otherwise do normal sync.
-
 if [[ ${force_sync} = "true" ]]; then
 	repo sync --force-sync
 else
@@ -66,21 +65,32 @@ fi
 
 #Set up build environment and apply repopicks
 source build/envsetup.sh
-repopick -t nvidia-enhancements-q
 repopick -t icosa-bt-lineage-17.1
 repopick -t nvidia-shieldtech-q
 repopick -t nvidia-beyonder-q
+repopick 300860
 repopick 287339
+repopick 302339
+repopick 302554
 repopick 284553
 
 #Download and apply source patches
-cd device/nvidia/foster_tab/
-patch -p1 <  ../../../.repo/local_manifests/patches/device_nvidia_foster_tab-beyonder.patch
-cd ../../../bionic
-patch -p1 < ../.repo/local_manifests/patches/bionic_intrinsics.patch
-cd ../frameworks/native
-patch -p1 < ../../.repo/local_manifests/patches/frameworks_native-mouse.patch
-cd ../../
+patch -d device/nvidia/foster_tab -p1 <  .repo/local_manifests/patches/device_nvidia_foster_tab-beyonder.patch
+patch -d bionic -p1 < .repo/local_manifests/patches/bionic_intrinsics.patch
+patch -d frameworks/native -p1 < .repo/local_manifests/patches/frameworks_native-mouse.patch
+patch -d system/core -p1 < .repo/local_manifests/patches/system_core-gatekeeper-hack.patch
+patch -d frameworks/base -p1 < .repo/local_manifests/patches/frameworks_base-desktop-dock.patch
+
+#Check if we're doing Foster/AndroidTV, and apply that specific patch
+if [[ -n $rom ]]; then
+        case $rom in
+		foster)
+			patch -d device/lineage/atv -p1 < .repo/local_manifests/patches/device_lineage_atv-res.patch
+			;;
+		*)
+			;;
+	esac
+fi
 
 echo "Source downloaded and patched.  Moving on to environment setup."
 #Setup ccache
