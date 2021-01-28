@@ -38,7 +38,7 @@ For first timers who have never interacted with git before, there will be some i
 
 If this is not your first time, and you are merely restarting from scratch, you can skip this entirely by invoking with the `-s` flag. The script will then be non-interactive.
 
-If you intend to build Foster / AndroidTV, please invoke with `-r foster_tab` to ensure any AndroidTV-specific patches are also applied.  This will save you time later.
+If you intend to build Foster / AndroidTV, please invoke with `-r foster` to ensure any AndroidTV-specific patches are also applied.  This will save you time later.
 
 ## qupd8.sh
 
