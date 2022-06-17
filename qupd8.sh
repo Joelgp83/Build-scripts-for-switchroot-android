@@ -10,7 +10,8 @@ do
 			rom=$OPTARG
 			;;
 		f)
-			force_sync="true"
+			#Temporarily disabling this until I understand snack.sh better 
+			#force_sync="true"
 			;;
 
 		u)
@@ -48,48 +49,14 @@ done
 #change directory TODO: Add check to make sure we're starting from switchroot_scripts in the lineage source
 cd ../
 
-#Grab latest branch heads
-repo forall -c 'git reset --hard'
-
 #Update the switchroot local manifests portion and the switchroot scripts repo
-cd .repo/local_manifests
-git pull
-cd ../..
+.repo/local_manifests/snack/snack.sh -y
 
 #Check if we are doing force-sync, otherwise do normal sync.
 if [[ ${force_sync} = "true" ]]; then
-	repo sync --force-sync
+	#repo sync --force-sync
 else
-	repo sync
-fi
-
-#Set up build environment and apply repopicks
-source build/envsetup.sh
-repopick -t icosa-bt-lineage-17.1
-repopick -t nvidia-shieldtech-q
-repopick -t nvidia-beyonder-q
-repopick 300860
-repopick 287339
-repopick 302339
-repopick 302554
-repopick 284553
-
-#Download and apply source patches
-patch -d device/nvidia/foster_tab -p1 <  .repo/local_manifests/patches/device_nvidia_foster_tab-beyonder.patch
-patch -d bionic -p1 < .repo/local_manifests/patches/bionic_intrinsics.patch
-patch -d frameworks/native -p1 < .repo/local_manifests/patches/frameworks_native-mouse.patch
-patch -d system/core -p1 < .repo/local_manifests/patches/system_core-gatekeeper-hack.patch
-patch -d frameworks/base -p1 < .repo/local_manifests/patches/frameworks_base-desktop-dock.patch
-
-#Check if we're doing Foster/AndroidTV, and apply that specific patch
-if [[ -n $rom ]]; then
-        case $rom in
-		foster)
-			patch -d device/lineage/atv -p1 < .repo/local_manifests/patches/device_lineage_atv-res.patch
-			;;
-		*)
-			;;
-	esac
+	#repo sync
 fi
 
 echo "Source downloaded and patched.  Moving on to environment setup."
@@ -99,29 +66,4 @@ export CCACHE_EXEC=$(which ccache)
 export WITHOUT_CHECK_API=true
 ccache -M 50G
 
-#Check which rom we're gonna build and set up and run lunch for it
-if [[ -n $rom ]]; then
-        case $rom in
-                icosa)
-			echo "Selected rom is Icosa"
-                        lunch lineage_icosa-userdebug
-			echo "Environment ready.  To build, run qbuild.sh -r <ROM NAME>."
-                        ;;
-                foster_tab)
-			echo "Selected ROM is FosterTab"
-                        lunch lineage_foster_tab-userdebug
-			echo "Environment ready.  To build, run qbuild.sh -r <ROM NAME>."
-                        ;;
-
-                foster)
-			echo "Selected ROM is Foster"
-                        lunch lineage_foster-userdebug
-			echo "Environment ready.  To build, run qbuild.sh -r <ROM NAME>."
-                        ;;
-                *)
-                        echo "Incorrect ROM name or No ROM specified.  Exiting."
-                        ;;
-        esac
-else
-        echo "No ROM specified.  Exiting."
-fi
+echo "Sources ready. To build, type ./qbuild -r <rom_name>, which will be either android or androidtv."
