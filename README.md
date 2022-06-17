@@ -44,19 +44,11 @@ If you intend to build Foster / AndroidTV, please invoke with `-r foster` to ens
 
 qupd8.sh is the source update script.  Run this when you want to grab the latest switchroot source changes.
 
-Invoke the update script with `./qupd8.sh -r <ROM NAME>` 
-  
-Your choices are:
+Invoke the update script with `./qupd8.sh `   
 
-`icosa` : **For No Nvidia Stuff**
 
-`foster_tab` : **For Nvidia Stuff**
+If you wish to update your copies of the Switchroot scripts, run with `-u`.
 
-`foster` : **For Android TV with Nvidia Stuff**
-
-If you wish to perform a `force-sync`, invoke with `-f` as well.  If you wish to update your copies of the Switchroot scripts, run with `-u`.
-
-If you use no flags, source will still be updated and the switchroot-specific non-AndroidTV patches applied, but the `lunch` command will not be run.  *Again, if you intend to build Foster/AndroidTV, you must specify the foster rom with either this script or qprep.sh as well as when running qbuild.sh*.
 
 ## qbuild.sh
 
@@ -65,10 +57,16 @@ If you use no flags, source will still be updated and the switchroot-specific no
 Standard invocation with default options will be 
 
 ```
-./qbuild.sh -r <ROM NAME>.
+./qbuild.sh -r <ROM TYPE>.
 ``` 
 
-So if you wanted to build icosa, you'd run `./qbuild.sh -r icosa`  
+Your choices are:
+
+`android` : **For standard tablet Android and UI**
+
+`androidtv` : **For Android TV plus the TV UI**
+
+So if you wanted to build the regular android tablet rom, you'd run `./qbuild.sh -r android`  
 
 Finally, invoking with `-c` will do a `make clean` before the build, in case you wanted do a fresh build.
 
