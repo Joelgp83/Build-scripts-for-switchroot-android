@@ -50,7 +50,7 @@ If you wish to update your copies of the Switchroot scripts, run with `-u`.
 
 ## qbuild.sh
 
-`qbuild.sh` is the build script. Optionally, you can control the number of CPU cores/threads to use with `-j(number)`.  Run this script `qprep.sh` for your first build, or run it after `qupd8.sh` to build with the latest source changes.
+`qbuild.sh` is the build script. Optionally, you can control the number of CPU cores/threads to use with `-j(number)`.  Run this script after `qprep.sh` for your first build, or run it after `qupd8.sh` to build with the latest source changes.
 
 Standard invocation with default options will be 
 
