@@ -26,7 +26,7 @@ do
 			;;
 
 		*)	
-			echo "Not a valid flag.  Please specify which ROM with -r <ROM NAME>."
+			echo "Not a valid flag.  Accepted flags are -c, -r, -j, -t.  Please refer to README.md for flag details."
 			exit 1
 			;;
 	esac
@@ -60,7 +60,7 @@ if [[ -n $rom ]]; then
                         ;;
 
                 *)
-                        echo "Incorrect ROM name or No ROM specified, exiting."
+                        echo "Incorrect ROM Type or No Type specified, exiting."
 			exit 1
                         ;;
         esac
@@ -115,6 +115,6 @@ if [[ -n $rom ]]; then
 	
 		
 else
-        echo "No ROM specified. Please specify a rom with -r <ROM NAME>."
+        echo "No ROM Type specified. Please specify a Type with -r <ROM TYPE>."
 	exit 1
 fi
