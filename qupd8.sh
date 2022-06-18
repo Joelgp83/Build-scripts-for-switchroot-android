@@ -53,11 +53,11 @@ cd ../
 .repo/local_manifests/snack/snack.sh -y
 
 #Check if we are doing force-sync, otherwise do normal sync.
-if [[ ${force_sync} = "true" ]]; then
+#if [[ ${force_sync} = "true" ]]; then
 	#repo sync --force-sync
-else
+#else
 	#repo sync
-fi
+#fi
 
 echo "Source downloaded and patched.  Moving on to environment setup."
 #Setup ccache
