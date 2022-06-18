@@ -100,12 +100,12 @@ if [[ -n $rom ]]; then
 	echo 'Bacon Delivered.  Grabbing the .dtb, twrp.img, and kernel files.....'
 
 	#Grab prebuilt twrp image.  Delete old copy of twrp first since wget can't seem to overwrite files.
-	if [ -f "../../../../../$romdir"_files"/switchroot/install/twrp.img" ]; then
+	if [ -f ../../../../../$romdir"_files"/switchroot/install/twrp.img ]; then
 		rm ../../../../../$romdir"_files"/switchroot/install/twrp.img
 	fi
-	cp twrp.img ../../../../../$romdir"_files
+	cp twrp.img ../../../../../$romdir"_files"
 
-	#Prepare new directory android/$romdir_files/switchroot/install, and copy boot.img back up to that.
+	#Prepare new directory android/$romdir"_files"/switchroot/install, and copy boot.img back up to that.
 	mkdir -p ../../../../../$romdir"_files"/switchroot/install
 	echo 'You will find them in the switchroot/install/ folder of the output directory.'	
 	cp boot.img ../../../../../$rom"_files"/switchroot/install
