@@ -1,5 +1,5 @@
 #!/bin/bash
-#firstPrep.sh -- Script for first-time download and setup of the Switchroot Android Q source
+#qprep.sh -- Script for first-time download and setup of the Switchroot Android Q source
 set -e
 
 #Get options and bail if invalid flags set
